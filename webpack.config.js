@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 
-
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
@@ -8,11 +7,11 @@ module.exports = {
     './src/index.js'
   ],
   module: {
-  loaders: [{
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    loader: 'react-hot!babel'
-  }]
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'react-hot!babel'
+    }]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -23,14 +22,13 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
     hot: true,
     historyApiFallback: true
-
   },
   plugins: [
-  new webpack.ProvidePlugin({
-    'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-  })
-]
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    })
+  ]
 };
